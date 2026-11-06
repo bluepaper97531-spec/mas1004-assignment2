@@ -1,0 +1,4 @@
+python src/official.py --tag baseline
+python src/official.py --tag baseline --seed 1
+python src/train_b.py --tag b1 --submit
+python src/check_submission.py --no-val
