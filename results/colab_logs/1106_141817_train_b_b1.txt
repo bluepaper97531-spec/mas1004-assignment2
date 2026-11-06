@@ -1,0 +1,10 @@
+$ python src/train_b.py --tag b1 --submit
+# commit 0cdeb94
+44257 photos (seoul 11274, busan 5191, tokyo 13347, osaka 7200, taipei 7245) on cuda
+epoch 1/4: loss 1.360 (411s)
+epoch 2/4: loss 1.165 (817s)
+epoch 3/4: loss 1.016 (1218s)
+epoch 4/4: loss 0.887 (1656s)
+validation score 0.495 (seoul 0.580, busan 0.383, tokyo 0.615, osaka 0.345, taipei 0.553)
+wrote /content/drive/MyDrive/mas1004/assignment2/results/b1/model.onnx: 11.17 million parameters, 1.81 billion multiply-adds
+copied to submission/. Check it with: python src/check_submission.py
