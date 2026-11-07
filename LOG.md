@@ -45,7 +45,7 @@ Everything here is by eye, not output of code. Percentages are rough guesses.
 - changed: removed 91 photos from selection.csv (44,257 -> 44,166), picked by eye from the suspects sheets of the Track B model (b1, 0.4952)
 - why: when I looked at the training photos of all five cities, about 20% (by eye) were close-ups of leaves or animals that show nothing about the city, and apart from signs, sea or fish markets, modern city scenes look mostly alike. So I removed only the photos that showed no language or geographic clue, and I kept photos with a clue even when the model got them wrong. I expect the model to memorize fewer photos that say nothing about the city, so the validation score should rise.
 - validation: 0.4972 (before: 0.4984)
-- what it means: TBD
+- what it means: the score did not rise but fell slightly, from 0.4984 to 0.4972 (-0.0012). This is far below the 0.01 I set as the limit of luck (seed 0 and 1 already differed by up to 4 points for single cities), so the drop is probably chance and I cannot say the change hurt or helped. Two explanations are possible: my hypothesis is wrong, or I removed too few photos (91, about 0.2%, against my guess of 20% by eye). This run cannot tell them apart. If a larger removal also shows no change, I should change the hypothesis.
 
 ## Plan
 - next: drop the photos with no city clue from selection.csv (one change), compare with baseline seed 0 (0.4984)
