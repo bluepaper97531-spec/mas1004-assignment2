@@ -44,7 +44,7 @@ Everything here is by eye, not output of code. Percentages are rough guesses.
 ## 2026-11-07 drop91 (Track A)
 - changed: removed 91 photos from selection.csv (44,257 -> 44,166), picked by eye from the suspects sheets of the Track B model (b1, 0.4952)
 - why: when I looked at the training photos of all five cities, about 20% (by eye) were close-ups of leaves or animals that show nothing about the city, and apart from signs, sea or fish markets, modern city scenes look mostly alike. So I removed only the photos that showed no language or geographic clue, and I kept photos with a clue even when the model got them wrong. I expect the model to memorize fewer photos that say nothing about the city, so the validation score should rise.
-- validation: TBD (before: 0.4984)
+- validation: 0.4972 (before: 0.4984)
 - what it means: TBD
 
 ## Plan
