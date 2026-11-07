@@ -41,6 +41,12 @@ Everything here is by eye, not output of code. Percentages are rough guesses.
 - my hypothesis, written before measuring: removing training photos that carry no linguistic or geographic clue (for example close-ups of leaves or animals) from selection.csv will raise the validation score, because the model then learns from photos that show signs, writing, sea or other regional features instead of memorizing photos that say nothing about the city.
 - how I will measure it: one change in track_a/selection.csv, compared with baseline seed 0 (0.4984). A difference under 0.01 may be luck.
 
+## 2026-11-07 drop91 (Track A)
+- changed: removed 91 photos from selection.csv (44,257 -> 44,166), picked by eye from the suspects sheets of the Track B model (b1, 0.4952)
+- why: when I looked at the training photos of all five cities, about 20% (by eye) were close-ups of leaves or animals that show nothing about the city, and apart from signs, sea or fish markets, modern city scenes look mostly alike. So I removed only the photos that showed no language or geographic clue, and I kept photos with a clue even when the model got them wrong. I expect the model to memorize fewer photos that say nothing about the city, so the validation score should rise.
+- validation: TBD (before: 0.4984)
+- what it means: TBD
+
 ## Plan
 - next: drop the photos with no city clue from selection.csv (one change), compare with baseline seed 0 (0.4984)
 - then: reduce near-duplicate frames (separate test)
