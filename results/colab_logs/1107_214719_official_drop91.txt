@@ -1,0 +1,24 @@
+$ python src/official.py --tag drop91
+# commit 044d04f
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+
+  0%|          | 0.00/44.7M [00:00<?, ?B/s]
+ 39%|███▉      | 17.4M/44.7M [00:00<00:00, 181MB/s]
+ 78%|███████▊  | 35.0M/44.7M [00:00<00:00, 183MB/s]
+100%|██████████| 44.7M/44.7M [00:00<00:00, 184MB/s]
+Track A, seed 0, on cuda: selection.csv, 44166 rows (seoul 11254, busan 5179, tokyo 13325, osaka 7183, taipei 7225)
+3906 steps of 64 photos = 249,984 photos through the network
+  step   390/3906  loss 1.431  (260s)
+  step   780/3906  loss 1.285  (509s)
+  step  1170/3906  loss 1.193  (751s)
+  step  1560/3906  loss 1.121  (995s)
+  step  1950/3906  loss 1.070  (1236s)
+  step  2340/3906  loss 0.995  (1474s)
+  step  2730/3906  loss 0.944  (1716s)
+  step  3120/3906  loss 0.853  (1954s)
+  step  3510/3906  loss 0.823  (2193s)
+  step  3900/3906  loss 0.777  (2430s)
+  step  3906/3906  loss 0.789  (2433s)
+
+validation score 0.497  (seoul 0.588, busan 0.409, tokyo 0.620, osaka 0.343, taipei 0.527)
+training took 40.5 min; wrote /content/drive/MyDrive/mas1004/assignment2/results/drop91_seed0/model.onnx
