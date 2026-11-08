@@ -1,0 +1,8 @@
+city      selected     of   by source
+seoul        11254  11274   commons 6752, osv5m 318, youtube 4184
+busan         5179   5191   commons 3475, youtube 1704
+tokyo        13325  13347   commons 6958, osv5m 1914, youtube 4453
+osaka         7183   7200   commons 5335, osv5m 338, youtube 1510
+taipei        7225   7245   commons 5649, osv5m 532, youtube 1044
+total 44166 rows
+dropped: 91 no visible city clue

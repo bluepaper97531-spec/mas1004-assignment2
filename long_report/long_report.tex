@@ -1,86 +1,108 @@
 % MAS1004 Assignment 2: long report.
-%
-% You fill this in with your agent, in your repository. AGENTS.md tells the
-% agent how. Red text in the PDF is what still has to be replaced.
-%
-% - Pictures go in figures/. Copy them from results/, which is not in git.
-% - Outputs go in outputs/: copy experiments.csv, LOG.md and the outputs of
-%   check_submission.py and curate.py count here. \outputfile{outputs/...}
-%   prints a file exactly as it is. Every number in this report has to come
-%   from such an output.
-%
-% To make the PDF: compress this folder into a zip, and on Overleaf choose
-% New Project, Upload Project. Set Menu, Compiler to XeLaTeX, and Recompile.
 
 \documentclass[11pt]{article}
 \usepackage{mas1004}
 
 \reporttitle{Assignment 2: Long report}
-\studentname{Your name}
-\studentid{Your student ID}
+\studentname{김형석}
+\studentid{20231020}
 
 \begin{document}
 \makeheader
 
-\fillin{Your leaderboard nickname, and the tags of your last Track A and Track B releases.}
+\textbf{Final releases.} Track A: \texttt{track-a-1}, the starter recipe. Track B:
+\texttt{track-b-2}, the \texttt{b2} run. Leaderboard scores were not available when
+this report was prepared: Track A \texttt{TODO-LEADERBOARD}; Track B
+\texttt{TODO-LEADERBOARD}.
 
-% The sections below are a suggestion. Change, merge or add sections as you
-% like; README.md, "The long report", says what a reader should be able to see.
-
-% ---------------------------------------------------------------------------
 \section*{Track A}
 
 \begin{center}\footnotesize
-\begin{tabular}{lp{0.6\linewidth}r}
+\begin{tabular}{lp{0.57\linewidth}r}
 \toprule
 tag & what changed from the run before & validation \\
 \midrule
-\multicolumn{3}{l}{\fillin{one row per recipe, with the numbers from experiments.csv}} \\
+baseline (seed 0) & Starter recipe as it is; all training photos (44,257). Reference run. & 0.4984 \\
+baseline (seed 1) & Only the seed changed (0 $\rightarrow$ 1), to see movement by chance. & 0.4979 \\
+drop91 (seed 0) & Removed 91 photos from \texttt{selection.csv} (44,257 $\rightarrow$ 44,166). & 0.4972 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\fillin{What you tried, why, and what you think each result means.}
+The baseline was run to have a reference score for every later change. It gets
+about half of the photos right (0.4984), well above the 20\% of random guessing;
+Busan (0.375) and Osaka (0.346) were the weakest cities. Changing only the seed
+moved the overall score by 0.0005, but single cities moved more. Therefore an
+overall change under about 0.01 may be luck, and two seeds are too few to measure
+the random variation reliably.
 
-\fillin{Your final recipe and selection, and their leaderboard score next to
-their validation score.}
+For \texttt{drop91}, the reason and interpretation are those in the lab notebook:
+the score fell from 0.4984 to 0.4972 ($-0.0012$), far below the 0.01 limit of
+luck, so I cannot say the change hurt or helped. The run cannot distinguish
+between the hypothesis being wrong and too few photos being removed. The final
+Track A release is therefore \texttt{track-a-1}, the starter recipe; \texttt{drop91}
+did not beat baseline seed 0 and was not released. Its validation score is 0.4984.
+Leaderboard score: not available (\texttt{TODO-LEADERBOARD}).
 
-% ---------------------------------------------------------------------------
 \section*{Decisions you made from photos}
 
-\picturefile{figures/mistakes_baseline_seed0_busan_00.png}
+\textbf{No example mistakes figure is used.} The photos were inspected using
+suspects sheets from the Track B \texttt{b1} model (0.4952).
 
-\fillin{What you looked at, what you saw in common, and the rule you wrote
-before acting.}
+I looked at training photos of all five cities by eye. I saw language written on
+signs and building walls; traditional buildings, clothing and relics; food;
+ports, fish markets and other scenes that cannot be seen in inland areas. About
+20\% by eye were close-ups of leaves or animals such as sparrows and cats. About
+30\% by eye were near-copies of the same scene from a slightly different angle.
+Modern city scenes look mostly alike apart from regional and cultural clues such
+as the sea, fish markets and language on signs.
 
-\fillin{What you changed (the output of curate.py count, or the photos you
-added), and the scores before and after.}
+The rule written before measuring was to remove training photos that carry no
+linguistic or geographic clue, such as close-ups of leaves or animals, while
+keeping photos with a clue even when the model got them wrong.
 
-\fillin{The requests you gave your agent for these decisions.}
+The change removed 91 photos. The count output is copied in
+\texttt{outputs/curate\_count.txt}: 44,166 selected rows remain, with 11,254
+Seoul, 5,179 Busan, 13,325 Tokyo, 7,183 Osaka and 7,225 Taipei. The validation
+score changed from 0.4984 to 0.4972 ($-0.0012$). No extra photos were added.
 
-% ---------------------------------------------------------------------------
+I ran curate.py suspects and curate.py drop myself in PowerShell, following the rule I had written in LOG.md before measuring.
+
 \section*{Track B}
 
-\fillin{What you tried, one step at a time, and the validation score after
-each step.}
+The first valid Track B setup, \texttt{b1}, used ResNet18, 224px, 4 epochs and
+\texttt{data/starter/train}; its validation score was 0.4952. The next run,
+\texttt{b2}, added \texttt{--balance} and changed nothing else; its validation
+score was 0.5107. The overall increase was 0.0155. Balancing draws every city
+with equal probability (about 20\% each), instead of in proportion to photo
+count, while the total amount of training stays the same.
 
-\fillin{How you collected any extra photos.}
+I chose \texttt{b2} from the numbers, not from looking at photos. Busan rose by
+0.075 and Tokyo fell by 0.127; Osaka rose by 0.123. Seoul fell by 0.060, One run cannot prove this.
 
-\fillin{Your validation score next to your leaderboard score, and why they
-might disagree.}
+I did not collect extra photos.
+
+The final Track B validation score is 0.5107. Its leaderboard score was not
+available (\texttt{TODO-LEADERBOARD}), so a disagreement cannot yet be assessed.
+
+The leaderboard uses frames from YouTube channels not in the starter data, and
+the final set is phone street photos, so validation and leaderboard scores may disagree.
 
 \subsection*{Your submission, as the grader sees it}
 \outputfile{outputs/check_submission.txt}
 
-% ---------------------------------------------------------------------------
 \section*{What made the difference}
 
-\fillin{Which change helped most and which least, in both tracks, with your
-numbers.}
+In Track A, \texttt{drop91} changed 0.4984 to 0.4972 ($-0.0012$), so the starter
+recipe remained final. In Track B, \texttt{--balance} changed 0.4952 to 0.5107
+($+0.0155$). \texttt{b2} was selected from the photo counts and per-city validation scores, not from looking at photos
+inspection; the log cautions that it was run only once.
 
-\fillin{What you would do next with one more week.}
+With one more week, I would widen the suspects sheets (\texttt{--every 1}, larger
+\texttt{--n}), remove more photos by the same rule, put Busan photos into
+\texttt{selection.csv} twice, run \texttt{b2} with other seeds, inspect Osaka
+mistakes, and repeat each change with seeds 0, 1 and 2.
 
-% ---------------------------------------------------------------------------
 \section*{All runs}
 \outputfile{outputs/experiments.csv}
 
