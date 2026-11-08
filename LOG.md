@@ -47,6 +47,12 @@ Everything here is by eye, not output of code. Percentages are rough guesses.
 - validation: 0.4972 (before: 0.4984)
 - what it means: the score did not rise but fell slightly, from 0.4984 to 0.4972 (-0.0012). This is far below the 0.01 I set as the limit of luck (seed 0 and 1 already differed by up to 4 points for single cities), so the drop is probably chance and I cannot say the change hurt or helped. Two explanations are possible: my hypothesis is wrong, or I removed too few photos (91, about 0.2%, against my guess of 20% by eye). This run cannot tell them apart. If a larger removal also shows no change, I should change the hypothesis.
 
+## 2026-11-08 b2 balance (Track B)
+- changed: added --balance to the starter Track B setup (ResNet18, 224px, 4 epochs); nothing else
+- why: Busan has the fewest training photos (5,191 vs 13,347 for Tokyo) and one of the lowest scores, so I think the small number of photos is a main reason for its low score, and making the model see Busan more often should help. Osaka also scores low although it has 7,200 photos, so there must be other causes too. Maybe modern cities have weak local features, which makes one city per country (Japan, Korea, Taiwan) hard to tell apart. --balance cannot fix that, so I expect it to help Busan more than Osaka.
+- validation: TBD (before: 0.4952)
+- what it means: TBD
+
 ## Plan
 - next: drop the photos with no city clue from selection.csv (one change), compare with baseline seed 0 (0.4984)
 - then: reduce near-duplicate frames (separate test)
