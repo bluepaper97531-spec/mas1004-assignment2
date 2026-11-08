@@ -1,1 +1,2 @@
-python src/official.py --tag drop91
+python src/train_b.py --tag b2 --balance --submit
+python src/check_submission.py --no-val
