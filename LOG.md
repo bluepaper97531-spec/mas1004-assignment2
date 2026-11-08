@@ -50,7 +50,7 @@ Everything here is by eye, not output of code. Percentages are rough guesses.
 ## 2026-11-08 b2 balance (Track B)
 - changed: added --balance to the starter Track B setup (ResNet18, 224px, 4 epochs); nothing else
 - why: Busan has the fewest training photos (5,191 vs 13,347 for Tokyo) and one of the lowest scores, so I think the small number of photos is a main reason for its low score, and making the model see Busan more often should help. Osaka also scores low although it has 7,200 photos, so there must be other causes too. Maybe modern cities have weak local features, which makes one city per country (Japan, Korea, Taiwan) hard to tell apart. --balance cannot fix that, so I expect it to help Busan more than Osaka.
-- validation: TBD (before: 0.4952)
+- validation: 0.511 (before: 0.4952)
 - what it means: TBD
 
 ## Plan
