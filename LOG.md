@@ -54,7 +54,8 @@ Everything here is by eye, not output of code. Percentages are rough guesses.
 - what it means: the overall score rose from 0.4952 to 0.5107 (+0.0155), a little more than the 0.01 I set as the limit of luck, but I ran it only once. --balance draws every city with equal probability (about 20% each) instead of in proportion to its photo count (Busan about 12%, Tokyo about 30%), while the total amount of training stays the same. Busan, which was drawn more often, rose (+0.075), and Tokyo, which was drawn less often, fell (-0.127), which is consistent with the idea that a city is recognized better when the model sees it more. But the photos did not increase, only how often they were drawn, and one run cannot prove this. It is not clear why Osaka rose even more (+0.123) than Busan, against my prediction. Osaka and Tokyo moved by more than 0.1, while Busan and Seoul moved less (+0.075, -0.060). Maybe there is some difference between these cities other than the country, but I have not checked this with the model's mistakes, so it is only a guess.
 
 ## Plan
-- next: drop the photos with no city clue from selection.csv (one change), compare with baseline seed 0 (0.4984)
-- then: reduce near-duplicate frames (separate test)
-- Track B: try a bigger image size or more photos
-- by 11/9: write the reports
+- not done: I could not run a second Track A change because of the time left before the deadline. The final Track A release is the starter recipe (track-a-1), and my only Track A change, drop91, is not a proven improvement.
+- next (Track A): drop91 removed only 91 photos (about 0.2%), so I could not tell "the hypothesis is wrong" from "too few photos removed". I would widen the suspects sheets (--every 1, larger --n), remove more photos that carry no city clue by the same rule, and measure again against baseline seed 0 (0.4984).
+- next (Track A): put Busan photos into selection.csv twice, the Track A counterpart of --balance in b2, and measure it with the same seed.
+- next (Track B): run b2 (--balance) again with other seeds, because one run (+0.0155) is too little to be sure. Look at the model's mistakes with curate.py mistakes to see where Osaka photos were wrong before and after --balance, since Osaka rose more than I predicted.
+- next (both): repeat each change with seeds 0, 1 and 2, so that the size of the luck is measured and not only assumed.
