@@ -12,8 +12,7 @@
 
 \textbf{Final releases.} Track A: \texttt{track-a-1}, the starter recipe. Track B:
 \texttt{track-b-2}, the \texttt{b2} run. Leaderboard scores were not available when
-this report was prepared: my nickname did not appear on the leaderboard updated
-2026-11-09 02:41 KST.
+this report was prepared: my nickname did not appear on the leaderboard updated 2026-11-09 02:41 KST.
 
 \section*{Track A}
 
@@ -78,13 +77,12 @@ with equal probability (about 20\% each), instead of in proportion to photo
 count, while the total amount of training stays the same.
 
 I chose \texttt{b2} from the numbers, not from looking at photos. Busan rose by
-0.075 and Tokyo fell by 0.127; Osaka rose by 0.123. Seoul fell by 0.060, One run cannot prove this.
+0.075 and Tokyo fell by 0.127; Osaka rose by 0.123. Seoul fell by 0.060, so showing the small cities more often seems to cost
+accuracy on the big ones. One run cannot prove this.
 
 I did not collect extra photos.
 
-The final Track B validation score is 0.5107. Its leaderboard score was not
-available, so a disagreement between validation and leaderboard scores cannot
-be assessed.
+The final Track B validation score is 0.5107. Its leaderboard score was not available, so a disagreement between validation and leaderboard scores cannot be assessed.
 
 The leaderboard uses frames from YouTube channels not in the starter data, and
 the final set is phone street photos, so validation and leaderboard scores may disagree.
@@ -96,8 +94,7 @@ the final set is phone street photos, so validation and leaderboard scores may d
 
 In Track A, \texttt{drop91} changed 0.4984 to 0.4972 ($-0.0012$), so the starter
 recipe remained final. In Track B, \texttt{--balance} changed 0.4952 to 0.5107
-($+0.0155$). \texttt{b2} was selected from the photo counts and per-city validation scores, not from looking at photos;
-the log cautions that it was run only once.
+($+0.0155$). \texttt{b2} was selected from the photo counts and per-city validation scores, not from looking at photos; the log cautions that it was run only once.
 
 With one more week, I would widen the suspects sheets (\texttt{--every 1}, larger
 \texttt{--n}), remove more photos by the same rule, put Busan photos into
